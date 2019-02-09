@@ -1,9 +1,7 @@
 import React from 'react';
 import {Body, BoxCenter, LeftPart, RightPart} from '../body/body-css';
-import { Input } from '../utils/input-css';
 import { Row } from '../utils/row-css';
-import { Label } from '../utils/label-css'
-import { FormGroup } from '../utils/form-group'
+import { FormGroup } from '../utils/form-group';
 
 export const body = (props) => {
     return(
@@ -14,7 +12,7 @@ export const body = (props) => {
                 </LeftPart>
                 <RightPart>
                     <Row>
-                        <FormGroup Type={'text'} Label={'Digite o nome da cidade'} Name={'teste'}/>
+                        <FormGroup Type={'text'} Label={'Digite o nome da cidade'} Name_For={'teste'}/>
                     </Row>
                 </RightPart>
             </BoxCenter>

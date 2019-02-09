@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 
 export const Input = styled.input.attrs((props) => ({
-    type: props.Type,
-    id: props.Name
+    type: props.Type ? props.Type : 'text',
+    id: props.Name_For
   }))`
     border: none;
     background-color: #8a97f2;
@@ -17,7 +17,7 @@ export const Input = styled.input.attrs((props) => ({
   `;
 
 export const Label = styled.label.attrs((props) => ({
-  for: props.For
+  for: props.Name_For
 }))`
     display: block;
 `;

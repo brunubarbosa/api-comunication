@@ -5,10 +5,10 @@ export const FormGroup = (props) => {
     return (
         <div>
             <Form_Group>
-                <Label For={props.Name}>
-                    {props.Label}
+                <Label {...props}>
+                    {props.Name_For}
                 </Label>
-                <Input Type={props.Type} Name={props.Name}/>
+                <Input Type={props.Type} Name_For={props.Name_For}/> 
             </Form_Group>
         </div>
     )
