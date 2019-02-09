@@ -1,11 +1,12 @@
 import React from 'react'
-import { Header } from './index-css';
+import { Header, Logo } from './index-css';
+
 
 export const header = () => {
   return (
     <React.Fragment>
         <Header>
-          oooi
+          <Logo fontSize={1.5}>Temperatura</Logo>
         </Header>
     </React.Fragment>
   )
