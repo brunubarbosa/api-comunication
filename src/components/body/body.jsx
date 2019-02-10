@@ -4,29 +4,40 @@ import { Row } from '../utils/row-css';
 import { FormGroup } from '../utils/form-group.jsx';
 import { Submit } from '../utils/input-css'
 
+
+const getValueCurrency = () => {
+        console.log()
+}
+
 export const body = (props) => {
+    
+
+    
     return(
         <Body>
             <BoxCenter>
 
                 <LeftPart />
                 <RightPart>
-                <form action={'teste'}>
+                
                     <Row style={{justifyContent: 'space-between'}}>
-<FormGroup Type={'text'} Label={'Digite o nome da cidade'} Name_For={'nome1'}/>
-<FormGroup Type={'text'} Label={'Digite o nome da cidade'} Name_For={'nome2'}/>
-<FormGroup Type={'text'} Label={'Digite o nome da cidade'} Name_For={'nome3'}/>
+                        <select onLoad={props.request}  name="" id="">
+
+                        {props.currencyName.map((element, index) => {
+                            return <option name={props.currencyName[index]}>{props.currencyName[index]}</option>
+                        })}
+                        
+                        </select>
                     </Row>
                     <Row>
-                        <span>Um: </span>
+                        <span>Um: {}</span>
                     </Row>
                     <Row>
                         <span>Dois: </span>
                     </Row>
                     <Row>
-                        <Submit>cuuuuuu</Submit>
+                        <button onClick={props.request}>Enviar</button>
                     </Row>
-                </form>
                 </RightPart>
             </BoxCenter>
         </Body>
