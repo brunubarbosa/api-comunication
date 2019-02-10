@@ -12,7 +12,7 @@ export const Body = styled.div`
 
 export const BoxCenter = styled.div`
     width: 930px;
-    height: 480px;
+    height: 400px;
     background-color: blue;
     display: flex;
 `;
@@ -25,4 +25,5 @@ export const LeftPart = styled.div`
 `
 
 export const RightPart = styled.div`
+    width: 70%;
 `

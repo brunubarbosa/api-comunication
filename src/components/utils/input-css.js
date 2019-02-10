@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { Mr } from '../utils/spacing-css'
 
 export const Input = styled.input.attrs((props) => ({
     type: props.Type ? props.Type : 'text',
@@ -21,3 +21,9 @@ export const Label = styled.label.attrs((props) => ({
 }))`
     display: block;
 `;
+
+export const Submit = styled.button.attrs((props) => ({
+  type: 'submit'
+}))`
+  background-color: red;
+`
