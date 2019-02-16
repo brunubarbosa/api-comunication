@@ -1,18 +1,20 @@
 
-import {Body, BoxCenter, LeftPart, RightPart} from '../body/body-css';
+import {Body, BoxCenter, LeftPart, RightPart, TitleForm} from '../body/body-css';
 import { Row } from '../utils/row-css';
 import { FormGroup } from '../utils/form-group.jsx';
-import { Submit } from '../utils/input-css'
+import { Submit, Input } from '../utils/input-css'
 import React, { Component } from 'react'
+import {LogoText} from '../header/index-css';
 
 export class body extends Component {
     
     constructor() {
         super();
         this.state={
-          currencyName: [],
-          currencyOBJ: '',
-          calcValue: ''
+          currencyNames: [],
+          currencyOBJOne: '',
+          ResultConversion: '',
+          valueInputOne: 0
         }
         this.processNewCurrency = this.processNewCurrency.bind(this);
         this.request = this.request.bind(this);
@@ -35,18 +37,27 @@ export class body extends Component {
       processNewCurrency(content) {
         let allCurrencyJSON = JSON.parse(content)
         for(let key in allCurrencyJSON) {
-            this.setState({currencyName: this.state.currencyName.concat(key)})
+            this.setState({currencyNames: this.state.currencyNames.concat(key)})
         }
         this.setState({allCurrencyJSON: allCurrencyJSON})
       }
 
       changeSelect(event) {
           console.log(this.state.allCurrencyJSON)
-          this.setState({currencyOBJ: this.state.allCurrencyJSON[event.target.value]})
+          this.setState({currencyOBJOne: this.state.allCurrencyJSON[event.target.value]})
       }
 
-      calcValue(event) {
-          this.setState({calcValue: this.state.currencyOBJ.bid * event.target.value})
+      ResultConversion(event) {
+        if(parseInt(event.target.value) && event.target.value !== 'default') {
+
+          this.setState({ResultConversion: this.state.currencyOBJOne.bid * event.target.value,
+            valueInputOne: event.target.value})
+        } else {
+          this.setState({ResultConversion: 0, valueInputOne: ''})
+
+
+        }
+
       }
   render() {
     return (
@@ -54,22 +65,33 @@ export class body extends Component {
         <BoxCenter>
             <LeftPart />
             <RightPart>
+                  <Row style={{justifyContent: 'center'}}>
+                    <TitleForm fontSize={2}>Converta sua moeda</TitleForm>
+                  </Row>
                     <select onLoad={this.state.request} onChange={(event)=>this.changeSelect(event)} name="" id="">
-                    {this.state.currencyName.map((element, index) => {
-                        return <option name={this.state.currencyName[index]}>{this.state.currencyName[index]}</option>
+                    <option value="default">Selecione uma moeda</option>
+                    {this.state.currencyNames.map((element, index) => {
+                        return <option name={this.state.currencyNames[index]}>{this.state.currencyNames[index]}</option>
                     })}
                     </select>
+                    
                 <Row>
-                    <span>Moeda: {this.state.currencyOBJ.name}</span>
+                  {this.state.currencyOBJOne ? <span>Moeda: {this.state.currencyOBJOne.name}</span> : ''}
+                    
                 </Row>
                 <Row>
-                    <span>Valor: {this.state.currencyOBJ.bid}</span>
+                  {this.state.currencyOBJOne ? <span>Moeda: <span>Valor: {this.state.currencyOBJOne.bid}</span></span> : ''}
+                    
                 </Row>
                 <Row>
-                    <input type="text" onChange={(event) => {this.calcValue(event)}} name="" placeholder="digite o valor em reais" id=""/>
+                  {this.state.currencyOBJOne ?
+                    <Input value={this.state.valueInputOne != 0 ? this.state.valueInputOne : ''} onChange={(event) => {this.ResultConversion(event)}} type={'text'} Placeholder={'Digite o valor em reais'}></Input> : ''}
+                    
+                    
                 </Row>
                     <Row>
-                    <span>{this.state.calcValue}</span>
+                    {this.state.currencyOBJOne ?
+                    <span>{this.state.ResultConversion}</span> : ''}
                     </Row>
             </RightPart>
         </BoxCenter>

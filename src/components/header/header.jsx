@@ -1,12 +1,15 @@
 import React from 'react'
-import { Header, Logo } from './index-css';
+import { Header} from './index-css';
+import Logo from '../../images/logo.png'
+import {LogoText} from '../header/index-css';
 
 
 export const header = () => {
   return (
     <React.Fragment>
         <Header>
-          <Logo fontSize={1.5}>Temperatura</Logo>
+          <img style={{width: '50px', height: '50px'}} src={Logo} alt=""/>
+          <LogoText fontSize={1.7}>Conversor de moeda</LogoText>
         </Header>
     </React.Fragment>
   )

@@ -3,10 +3,13 @@ import { Mr } from '../utils/spacing-css'
 
 export const Input = styled.input.attrs((props) => ({
     type: props.Type ? props.Type : 'text',
-    id: props.Name_For
+    id: props.Name_For,
+    placeholder: props.Placeholder
   }))`
     border: none;
-    background-color: #8a97f2;
+    background-color: transparent;
+    outline: none;
+    border-bottom: 1px solid black;
   `;
 
   export const Form_Group = styled.div`
