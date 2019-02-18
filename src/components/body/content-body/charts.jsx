@@ -5,7 +5,8 @@ import Chart from 'chart.js';
 
 export class Charts extends Component {
   constructor(props) {
-    super();
+    super(props);
+    console.log(this.props)
     this.state = { dataChart: '' }
     ReactChartkick.addAdapter(Chart);
     this.getPeriod = this.getPeriod.bind(this)
@@ -13,6 +14,7 @@ export class Charts extends Component {
   }
 
   requestDataChart(event) {
+    console.log(this.props.currencyOne)
     let btnValue = event.target.value;
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = () => {
@@ -21,7 +23,7 @@ export class Charts extends Component {
 
       }
     };
-    xhttp.open("GET", `https://economia.awesomeapi.com.br/json/list/USD-BRL/${btnValue}`, true);
+    xhttp.open("GET", `https://economia.awesomeapi.com.br/json/list/${this.props.currencyOne.code}-BRL/${btnValue}`, true);
     xhttp.send();
   }
 

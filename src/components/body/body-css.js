@@ -11,8 +11,8 @@ export const Body = styled.div`
 `;
 
 export const BoxCenter = styled.div`
-    width: 930px;
-    height: 400px;
+    width: 85%;
+    height: 500px;
     background-color: #a4ee80;
     display: flex;
     border-top-right-radius : 50px;
@@ -30,7 +30,7 @@ export const LeftPart = styled.div`
 `
 
 export const RightPart = styled.div`
-    width: 70%;
+    width: 100%;
     padding: 20px 50px;
 `
 

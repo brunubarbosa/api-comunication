@@ -7,7 +7,7 @@ export default class ChooseCurrency extends Component {
   render() {
     return (
       <div>
-        <select onLoad={this.props.request} onChange={(event)=>this.props.changeSelect(event)} name="" id="">
+        <select onLoad={this.props.request} onChange={(event)=>this.props.changeSelect(event)} name="selectOne" id="">
             <option value="default">Selecione uma moeda</option>
                 {this.props.currencyNames.map((element, index) => {
                 return <option  name={this.props.currencyNames[index]}>

@@ -52,12 +52,11 @@ export class body extends Component {
       }
       
       changeSelect(event) {
-        if(event.target.value !== 'default' && event.target.value != undefined) {
-          this.setState({currencyOBJOne: this.state.allCurrencyJSON[event.target.value]})
-            
-            let result = this.state.currencyOBJOne.bid * this.state.valueInputOne
-            this.setState({ResultConversion: result.toLocaleString('pt-BR')})
-            this.setState({isResultActive: true})
+        if(event.target.value !== 'default') {
+          this.setState({isResultActive: true})
+            this.setState({currencyOBJOne: this.state.allCurrencyJSON[event.target.value]})
+          let result = this.state.currencyOBJOne.bid * this.state.valueInputOne
+          this.setState({ResultConversion: result.toLocaleString('pt-BR')})
           } else {
             this.setState({isResultActive: false})
 
@@ -95,7 +94,7 @@ export class body extends Component {
                   
                 </Row>
                 <Row>
-                  <Charts />
+                  <Charts currencyOne={this.state.currencyOBJOne} />
                 </Row>
             </RightPart>
         </BoxCenter>
