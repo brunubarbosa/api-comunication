@@ -8,6 +8,8 @@ import {LogoText} from '../header/index-css';
 import ChooseCurrency from './content-body/chooseCurrency';
 import { relative, isAbsolute } from 'path';
 import ResultBlock from './content-body/resultBlock';
+import Charts from './content-body/charts';
+
 
 export class body extends Component {
     
@@ -24,6 +26,7 @@ export class body extends Component {
         this.request = this.request.bind(this);
         this.changeSelect = this.changeSelect.bind(this);
         this.resultConversion = this.resultConversion.bind(this)
+        
         this.request()
       }
       
@@ -89,7 +92,10 @@ export class body extends Component {
                 </Row>
                 <Row>
                   {this.state.isResultActive ? <ResultBlock {...this.state} resultConversion={this.resultConversion} /> : ''}
-                 
+                  
+                </Row>
+                <Row>
+                  <Charts />
                 </Row>
             </RightPart>
         </BoxCenter>

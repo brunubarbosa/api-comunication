@@ -22,5 +22,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "chart.js": "^2.7.3",
+    "react-chartkick": "^0.3.0"
+  }
 }
