@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Mr } from '../utils/spacing-css'
 
 export const Input = styled.input.attrs((props) => ({
     type: props.Type ? props.Type : 'text',

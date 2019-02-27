@@ -30,7 +30,6 @@ export class body extends Component {
         this.request()
       }
       
-    
       request() {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = () => {
@@ -52,9 +51,10 @@ export class body extends Component {
       }
       
       changeSelect(event) {
-        if(event.target.value !== 'default') {
+        console.log(event)
+        if(event.value !== 'default') {
           this.setState({isResultActive: true})
-            this.setState({currencyOBJOne: this.state.allCurrencyJSON[event.target.value]})
+            this.setState({currencyOBJOne: this.state.allCurrencyJSON[event.value]})
           let result = this.state.currencyOBJOne.bid * this.state.valueInputOne
           this.setState({ResultConversion: result.toLocaleString('pt-BR')})
           } else {
@@ -66,14 +66,11 @@ export class body extends Component {
       resultConversion(event) {
         
         if(!isNaN(event.target.value)) {
-          console.log(parseInt(event.target.value))
           let result = this.state.currencyOBJOne.bid * event.target.value
           this.setState({ResultConversion: result.toLocaleString('pt-BR'),
             valueInputOne: event.target.value})
         } else {
           this.setState({ResultConversion: this.state.ResultConversion, valueInputOne: this.state.valueInputOne})
-
-
         }
 
       }
@@ -91,7 +88,6 @@ export class body extends Component {
                 </Row>
                 <Row>
                   {this.state.isResultActive ? <ResultBlock {...this.state} resultConversion={this.resultConversion} /> : ''}
-                  
                 </Row>
                 <Row>
                   <Charts currencyOne={this.state.currencyOBJOne} />

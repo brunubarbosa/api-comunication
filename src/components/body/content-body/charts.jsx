@@ -6,7 +6,6 @@ import Chart from 'chart.js';
 export class Charts extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props)
     this.state = { dataChart: '' }
     ReactChartkick.addAdapter(Chart);
     this.getPeriod = this.getPeriod.bind(this)
@@ -14,11 +13,10 @@ export class Charts extends Component {
   }
 
   requestDataChart(event) {
-    console.log(this.props.currencyOne)
     let btnValue = event.target.value;
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = () => {
-      if (xhttp.readyState == 4 && xhttp.status == 200) {
+      if (xhttp.readyState === 4 && xhttp.status === 200) {
         this.setState({ allDataJson: JSON.parse(xhttp.responseText) }, (btnValue) => { this.getPeriod(btnValue) })
 
       }

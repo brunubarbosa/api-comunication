@@ -3,10 +3,10 @@ import { Input } from '../../utils/input-css';
 import { Row } from '../../utils/row-css';
 
 export class ResultBlock extends Component {
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props)
+  }
 
-    }
   render() {
     return (
       <div>
