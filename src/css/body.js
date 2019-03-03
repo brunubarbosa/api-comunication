@@ -32,6 +32,9 @@ export const LeftPart = styled.div`
 export const RightPart = styled.div`
     width: 100%;
     padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 `
 
 export const TitleForm = styled.span`

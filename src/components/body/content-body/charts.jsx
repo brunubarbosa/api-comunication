@@ -49,7 +49,8 @@ export class Charts extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'column'}}>
+        <div>
         <Row>
         <TitleForm fontSize={1}>Ver gráfico de:</TitleForm>
         </Row>
@@ -60,8 +61,9 @@ export class Charts extends Component {
         <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={40}>40</BtnPeriod>
         <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={50}>50</BtnPeriod>
        </Row>
+        </div>
         {this.state.dataChart ?
-          <AreaChart prefix="R$" label={['Valor']} width="700px" height="150px" data={this.state.dataChart} /> : ''
+          <AreaChart style={{}} prefix="R$" label={['Valor']} width="800px" height="250px" data={this.state.dataChart} /> : ''
         }
       </div>
     )

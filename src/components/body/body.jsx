@@ -9,6 +9,7 @@ import ChooseCurrency from './content-body/chooseCurrency';
 import { relative, isAbsolute } from 'path';
 import ResultBlock from './content-body/resultBlock';
 import Charts from './content-body/charts';
+import axios from 'axios';
 
 
 export class body extends Component {
@@ -31,23 +32,26 @@ export class body extends Component {
       }
       
       request() {
-        let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = () => {
-          if (xhttp.readyState == 4 && xhttp.status == 200) {
-            
-            this.processNewCurrency(xhttp.responseText)
-            }
-        };
-        xhttp.open("GET", "https://economia.awesomeapi.com.br/all", true);
-        xhttp.send();
+        axios.get('https://economia.awesomeapi.com.br/all').then(response => {
+          this.processNewCurrency(response.data)
+        })
+
+        // let xhttp = new XMLHttpRequest();
+        // xhttp.onreadystatechange = () => {
+        //   if (xhttp.readyState == 4 && xhttp.status == 200) {
+        //     console.log(xhttp.responseText)
+        //     this.processNewCurrency(xhttp.responseText)
+        //     }
+        // };
+        // xhttp.open("GET", "https://economia.awesomeapi.com.br/all", true);
+        // xhttp.send();
       }
     
       processNewCurrency(content) {
-        let allCurrencyJSON = JSON.parse(content)
-        for(let key in allCurrencyJSON) {
-          this.setState({currencyNames: this.state.currencyNames.concat(key)})
+        for(let key in content) {
+          this.setState({currencyNames: [...this.state.currencyNames, key]})
         }
-        this.setState({allCurrencyJSON: allCurrencyJSON})
+        this.setState({allCurrencyJSON: content})
       }
 
       componentDidUpdate (prevProps, prevState) {
@@ -81,6 +85,7 @@ export class body extends Component {
           <BoxCenter>
             <LeftPart />
               <RightPart>
+                <div>
                 <Row style={{justifyContent: 'center'}}>
                   <TitleForm fontSize={2}>Converta sua moeda</TitleForm>
                 </Row>
@@ -90,7 +95,8 @@ export class body extends Component {
                 <Row>
                   {this.state.isResultActive ? <ResultBlock {...this.state} resultConversion={this.resultConversion} /> : ''}
                 </Row>
-                <Row>
+                </div>
+                <Row style={{height: '100%', display: 'flex', alignItems: 'space between'}}>
                   {this.state.isResultActive ? <Charts currencyOne={this.state.currencyOBJOne} /> : ''}
                 </Row>
             </RightPart>
