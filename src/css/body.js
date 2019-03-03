@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import backgroundImage from '../../images/background.jpg'
+import backgroundImage from '../images/background.jpg'
 
 export const Body = styled.div`
     background-color: #39fb74;

@@ -1,10 +1,10 @@
 
-import {Body, BoxCenter, LeftPart, RightPart, TitleForm} from '../body/body-css';
-import { Row } from '../utils/row-css';
+import {Body, BoxCenter, LeftPart, RightPart, TitleForm} from '../../css/body';
+import { Row } from '../../css/row';
 import { FormGroup } from '../utils/form-group.jsx';
-import { Submit, Input } from '../utils/input-css'
+import { Submit, Input } from '../../css/input'
 import React, { Component } from 'react'
-import {LogoText} from '../header/index-css';
+import {LogoText} from '../../css/header';
 import ChooseCurrency from './content-body/chooseCurrency';
 import { relative, isAbsolute } from 'path';
 import ResultBlock from './content-body/resultBlock';
@@ -49,22 +49,24 @@ export class body extends Component {
         }
         this.setState({allCurrencyJSON: allCurrencyJSON})
       }
+
+      componentDidUpdate (prevProps, prevState) {
+        if(this.state.currencyOBJOne != prevState.currencyOBJOne) {
+        }
+      }
       
       changeSelect(event) {
-        console.log(event)
-        if(event.value !== 'default') {
+        if(event.label !== 'selecione') {
           this.setState({isResultActive: true})
             this.setState({currencyOBJOne: this.state.allCurrencyJSON[event.value]})
           let result = this.state.currencyOBJOne.bid * this.state.valueInputOne
           this.setState({ResultConversion: result.toLocaleString('pt-BR')})
           } else {
             this.setState({isResultActive: false})
-
           }
       }
 
       resultConversion(event) {
-        
         if(!isNaN(event.target.value)) {
           let result = this.state.currencyOBJOne.bid * event.target.value
           this.setState({ResultConversion: result.toLocaleString('pt-BR'),
@@ -72,7 +74,6 @@ export class body extends Component {
         } else {
           this.setState({ResultConversion: this.state.ResultConversion, valueInputOne: this.state.valueInputOne})
         }
-
       }
   render() {
     return (
@@ -84,13 +85,13 @@ export class body extends Component {
                   <TitleForm fontSize={2}>Converta sua moeda</TitleForm>
                 </Row>
                 <Row>
-                <ChooseCurrency {...this.state} changeSelect={this.changeSelect} />
+                <ChooseCurrency {...this.state} changeSelect={this.changeSelect}/>
                 </Row>
                 <Row>
                   {this.state.isResultActive ? <ResultBlock {...this.state} resultConversion={this.resultConversion} /> : ''}
                 </Row>
                 <Row>
-                  <Charts currencyOne={this.state.currencyOBJOne} />
+                  {this.state.isResultActive ? <Charts currencyOne={this.state.currencyOBJOne} /> : ''}
                 </Row>
             </RightPart>
         </BoxCenter>

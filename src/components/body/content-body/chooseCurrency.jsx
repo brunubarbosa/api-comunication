@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 
-
 export default class ChooseCurrency extends Component {
     constructor(props) {
         super(props)
-        this.state = {options: []}
+        this.state = {options: [{value: '', label: 'selecione'}]}
       }
       componentWillReceiveProps(nextProps) {
         this.props.currencyNames.map((element, index) => {
@@ -13,12 +12,11 @@ export default class ChooseCurrency extends Component {
         })
 
       }
-
   render() {
     return (
-      <div>
-        <Select onChange={(event)=> {this.props.changeSelect(event)}} options={this.state.options}/>
-      </div>
+        <div style={{width: '100px'}}>
+          <Select onChange={(event)=> {this.props.changeSelect(event)}} options={this.state.options}/>
+        </div>
     )
   }
 }

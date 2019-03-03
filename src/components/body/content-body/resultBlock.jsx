@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Input } from '../../utils/input-css';
-import { Row } from '../../utils/row-css';
+import { Input } from '../../../css/input';
+import { Row } from '../../../css/row';
+import { TitleForm } from '../../../css/body';
 
 export class ResultBlock extends Component {
   constructor(props) {
@@ -11,10 +12,10 @@ export class ResultBlock extends Component {
     return (
       <div>
         <Row>
-            <span>Moeda: {this.props.currencyOBJOne.name}</span>
+            <TitleForm fontSize={1}>Moeda: {this.props.currencyOBJOne ? this.props.currencyOBJOne.name : ''}</TitleForm>
         </Row>
         <Row>
-            <span>Valor: {this.props.currencyOBJOne.bid}</span>
+            <TitleForm fontSize={1}>Valor: {this.props.currencyOBJOne ? this.props.currencyOBJOne.bid : ''}</TitleForm>
         </Row>
         <Row>
             <Input value={this.props.valueInputOne}
@@ -23,7 +24,7 @@ export class ResultBlock extends Component {
             Placeholder={'Digite o valor em reais'} />
         </Row>
         <Row>
-            <span>{this.props.ResultConversion }</span>
+            {this.props.valueInputOne ? <TitleForm fontSize={1}>{this.props.ResultConversion }</TitleForm> : ''}
         </Row>
       </div>
     )

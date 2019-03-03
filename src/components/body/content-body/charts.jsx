@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import ReactChartkick, { LineChart, AreaChart } from 'react-chartkick'
 import Chart from 'chart.js';
+import {BtnPeriod} from '../../../css/input';
+import {Row} from '../../../css/row';
+import {TitleForm} from '../../../css/body';
+
 
 
 export class Charts extends Component {
@@ -46,14 +50,19 @@ export class Charts extends Component {
   render() {
     return (
       <div>
+        <Row>
+        <TitleForm fontSize={1}>Ver gráfico de:</TitleForm>
+        </Row>
+       <Row>
+       <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10}>10</BtnPeriod>
+        <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={20}>20</BtnPeriod>
+        <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={30}>30</BtnPeriod>
+        <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={40}>40</BtnPeriod>
+        <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={50}>50</BtnPeriod>
+       </Row>
         {this.state.dataChart ?
-          <AreaChart prefix="R$" label={['vvvvv']} width="700px" height="150px" data={this.state.dataChart} /> : ''
+          <AreaChart prefix="R$" label={['Valor']} width="700px" height="150px" data={this.state.dataChart} /> : ''
         }
-        <button onClick={(event) => { this.requestDataChart(event) }} value={10}>10</button>
-        <button onClick={(event) => { this.requestDataChart(event) }} value={10} value={20}>20</button>
-        <button onClick={(event) => { this.requestDataChart(event) }} value={10} value={30}>30</button>
-        <button onClick={(event) => { this.requestDataChart(event) }} value={10} value={40}>40</button>
-        <button onClick={(event) => { this.requestDataChart(event) }} value={10} value={50}>50</button>
       </div>
     )
   }

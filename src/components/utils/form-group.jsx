@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Form_Group, Label } from '../utils/input-css';
+import { Input, Form_Group, Label } from '../../css/input';
 
 
 export const FormGroup = (props) => {

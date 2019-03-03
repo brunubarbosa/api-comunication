@@ -29,3 +29,15 @@ export const Submit = styled.button.attrs((props) => ({
 }))`
   background-color: red;
 `
+
+export const BtnPeriod = styled.button`
+  background-color: #357d4a;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  color: white;
+  font-family: 'Ubuntu',sans-serif;
+`
