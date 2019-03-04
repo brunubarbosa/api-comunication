@@ -36,6 +36,7 @@ export const BtnPeriod = styled.button`
   border-radius: 5px;
   font-size: 1rem;
   border: none;
+  outline: none;
   cursor: pointer;
   margin-right: 10px;
   color: white;

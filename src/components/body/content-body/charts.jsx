@@ -14,9 +14,11 @@ export class Charts extends Component {
     ReactChartkick.addAdapter(Chart);
     this.getPeriod = this.getPeriod.bind(this)
     this.requestDataChart = this.requestDataChart.bind(this)
+    this.resetDataChart = this.resetDataChart.bind(this)
   }
 
   requestDataChart(event) {
+    this.props.setChartsActive()
     let btnValue = event.target.value;
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = () => {
@@ -27,6 +29,11 @@ export class Charts extends Component {
     };
     xhttp.open("GET", `https://economia.awesomeapi.com.br/json/list/${this.props.currencyOne.code}-BRL/${btnValue}`, true);
     xhttp.send();
+  }
+
+  resetDataChart() {
+    console.log('aaaa')
+    this.setState({dataChart: ''})
   }
 
 
@@ -47,6 +54,14 @@ export class Charts extends Component {
     this.setState({ dataChart: readyData })
   }
 
+  componentWillUpdate(nextProps) {
+    if(this.props.chartsActive != nextProps.chartsActive) {
+      console.log(nextProps.chartsActive)
+      if(!nextProps.chartsActive) {
+        this.setState({dataChart: ''})
+      }
+    }
+  }
   render() {
     return (
       <div style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'column'}}>
@@ -62,9 +77,7 @@ export class Charts extends Component {
         <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={50}>50</BtnPeriod>
        </Row>
         </div>
-        {this.state.dataChart ?
-          <AreaChart style={{}} prefix="R$" label={['Valor']} width="800px" height="250px" data={this.state.dataChart} /> : ''
-        }
+        {this.props.chartsActive ? <AreaChart prefix="R$" label={['Valor']} width="800px" height="250px" data={this.state.dataChart} /> : ''}
       </div>
     )
   }

@@ -8,8 +8,6 @@ export default class ChooseCurrency extends Component {
       }
       componentWillReceiveProps(nextProps) {
         if(nextProps.currencyNames != this.props.currencyNames){
-
-          console.log(this.props.currencyNames)
           this.props.currencyNames.map((element, index) => {
             this.setState({options: [...this.state.options, {value: element, label: element}]})
           })

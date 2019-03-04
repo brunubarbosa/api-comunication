@@ -21,30 +21,34 @@ export class body extends Component {
           ResultConversion: '',
           valueInputOne: '',
           currencyOBJOne: '',
-          isResultActive: false
+          isResultActive: false,
+          chartsActive: false
         }
         this.processNewCurrency = this.processNewCurrency.bind(this);
         this.request = this.request.bind(this);
         this.changeSelect = this.changeSelect.bind(this);
         this.resultConversion = this.resultConversion.bind(this)
+        this.setChartsActive = this.setChartsActive.bind(this)
         
         this.request()
       }
+
+      setChartsActive() {
+        this.setState({chartsActive: true})
+      }
       
       request() {
-        axios.get('https://economia.awesomeapi.com.br/all').then(response => {
+        var config = {
+          onUploadProgress: function(progressEvent) {
+            console.log('aaa')
+            var percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+            console.log(percentCompleted)
+          }
+        };
+
+        axios.get('https://economia.awesomeapi.com.br/all', config).then(response => {
           this.processNewCurrency(response.data)
         })
-
-        // let xhttp = new XMLHttpRequest();
-        // xhttp.onreadystatechange = () => {
-        //   if (xhttp.readyState == 4 && xhttp.status == 200) {
-        //     console.log(xhttp.responseText)
-        //     this.processNewCurrency(xhttp.responseText)
-        //     }
-        // };
-        // xhttp.open("GET", "https://economia.awesomeapi.com.br/all", true);
-        // xhttp.send();
       }
     
       processNewCurrency(content) {
@@ -60,6 +64,8 @@ export class body extends Component {
       }
       
       changeSelect(event) {
+        this.setState({chartsActive: false})
+        
         if(event.label !== 'selecione') {
           this.setState({isResultActive: true})
             this.setState({currencyOBJOne: this.state.allCurrencyJSON[event.value]})
@@ -97,7 +103,7 @@ export class body extends Component {
                 </Row>
                 </div>
                 <Row style={{height: '100%', display: 'flex', alignItems: 'space between'}}>
-                  {this.state.isResultActive ? <Charts currencyOne={this.state.currencyOBJOne} /> : ''}
+                  {this.state.isResultActive ? <Charts currencyOne={this.state.currencyOBJOne} chartsActive={this.state.chartsActive} setChartsActive={this.setChartsActive} /> : ''}
                 </Row>
             </RightPart>
         </BoxCenter>
