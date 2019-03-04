@@ -66,15 +66,15 @@ export class Charts extends Component {
     return (
       <div style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'column'}}>
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-        <Row style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-        <TitleForm fontSize={1}>Ver gráfico de:</TitleForm>
+        <Row style={{display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '10px'}}>
+        <TitleForm fontSize={1}>Ver gráfico dos ultimos:</TitleForm>
         </Row>
        <Row style={{display: 'flex', justifyContent: 'center'}}>
-       <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10}>10</BtnPeriod>
-        <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={20}>20</BtnPeriod>
-        <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={30}>30</BtnPeriod>
-        <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={40}>40</BtnPeriod>
-        <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={50}>50</BtnPeriod>
+       <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10}>10 dias</BtnPeriod>
+        <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={20}>20 dias</BtnPeriod>
+        <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={30}>30 dias</BtnPeriod>
+        <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={40}>40 dias</BtnPeriod>
+        <BtnPeriod onClick={(event) => { this.requestDataChart(event) }} value={10} value={50}>50 dias</BtnPeriod>
        </Row>
         </div>
         {this.props.chartsActive ? <AreaChart prefix="R$" label={['Valor']} width="800px" height="200px" data={this.state.dataChart} /> : ''}
