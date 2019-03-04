@@ -65,7 +65,7 @@ export class body extends Component {
       
       changeSelect(event) {
         this.setState({chartsActive: false})
-        
+
         if(event.label !== 'selecione') {
           this.setState({isResultActive: true})
             this.setState({currencyOBJOne: this.state.allCurrencyJSON[event.value]})
@@ -91,18 +91,18 @@ export class body extends Component {
           <BoxCenter>
             <LeftPart />
               <RightPart>
-                <div>
+                <div >
                 <Row style={{justifyContent: 'center'}}>
                   <TitleForm fontSize={2}>Converta sua moeda</TitleForm>
                 </Row>
-                <Row>
-                <ChooseCurrency {...this.state} changeSelect={this.changeSelect}/>
+                <Row style={{display: 'flex', justifyContent: 'center'}}>
+                <ChooseCurrency  {...this.state} changeSelect={this.changeSelect}/>
                 </Row>
-                <Row>
+                <Row style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                   {this.state.isResultActive ? <ResultBlock {...this.state} resultConversion={this.resultConversion} /> : ''}
                 </Row>
                 </div>
-                <Row style={{height: '100%', display: 'flex', alignItems: 'space between'}}>
+                <Row style={{height: '100%', display: 'flex', alignItems: 'space between', justifyContent: 'center'}}>
                   {this.state.isResultActive ? <Charts currencyOne={this.state.currencyOBJOne} chartsActive={this.state.chartsActive} setChartsActive={this.setChartsActive} /> : ''}
                 </Row>
             </RightPart>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
+import { TitleForm } from '../../../css/body'
 
 export default class ChooseCurrency extends Component {
     constructor(props) {
@@ -16,8 +17,11 @@ export default class ChooseCurrency extends Component {
       }
   render() {
     return (
-        <div style={{width: '100px'}}>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <TitleForm fontSize={1.3}>Selecione a moeda</TitleForm>
+          <div style={{width: '300px'}}>
           <Select onChange={(event)=> {this.props.changeSelect(event)}} options={this.state.options}/>
+        </div>
         </div>
     )
   }
