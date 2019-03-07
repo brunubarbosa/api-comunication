@@ -3,7 +3,6 @@ import { Header} from '../../css/header';
 import Logo from '../../images/logo.png'
 import {LogoText} from '../../css/header';
 
-
 export const header = () => {
   return (
     <React.Fragment>

@@ -10,6 +10,8 @@ import { relative, isAbsolute } from 'path';
 import ResultBlock from './content-body/resultBlock';
 import Charts from './content-body/charts';
 import axios from 'axios';
+import { Git, Tooltip } from "../../css/git";
+import GitImg from '../../images/giticon.png';
 
 
 export class body extends Component {
@@ -107,6 +109,16 @@ export class body extends Component {
                 </Row>
             </RightPart>
         </BoxCenter>
+        <Git href="https://github.com/thedevb/api-comunication" target="_blank">
+          <img src={GitImg} />
+        </Git>
+        <Tooltip className="wrapperGit">
+          <p>Esse é um projeto feito apenas para estudo</p>
+          <p>você pode ver mais sobre ele no Github</p>
+            <div className="triangulo">
+              <div />
+            </div>
+        </Tooltip>
     </Body>
     )
   }
